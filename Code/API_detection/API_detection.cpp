@@ -11,6 +11,7 @@ void API_detection::detect_ball(Mat image) {
     vector<Vec3f> circles;
     try
     {
+        imshow("origin", image);
         circles = position_ball(image);
     }
     catch (const std::exception&)
@@ -58,7 +59,6 @@ vector<Vec3f> API_detection::position_ball(Mat image)
     Mat gray;
     cvtColor(image, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 5);
-    imshow("origin", image);
     vector<Vec3f> circles;
     HoughCircles(gray, circles,
         HOUGH_GRADIENT,
